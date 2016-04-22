@@ -23,7 +23,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,
+  devise :database_authenticatable, :registerable, :omniauthable, :session_limitable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:facebook, :twitter]
 
   TEMP_EMAIL_PREFIX = 'change@me'

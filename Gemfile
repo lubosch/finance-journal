@@ -19,6 +19,7 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
 gem 'devise-i18n'
+gem 'devise_security_extension'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
