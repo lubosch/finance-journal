@@ -1,7 +1,9 @@
-%table.table.table-stripped
-  %tr
-    %th.table-header
-      Action
-    %th.table-header
-      Date
-  =render partial: 'log_item', collection: @devise_logs
+%table.table.table-stripped.tablesorter
+  %thead
+    %tr
+      %th.table-header
+        Action
+      %th.table-header
+        Date
+  %tbody
+    = render partial: 'log_item', collection: @devise_logs
