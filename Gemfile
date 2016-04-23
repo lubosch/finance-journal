@@ -46,6 +46,7 @@ gem 'puma'
 # bootstrap-sass
 gem 'bootstrap-sass'
 gem 'bootstrap-modal-rails'
+gem 'bootstrap-datepicker-rails'
 
 gem 'annotate'
 

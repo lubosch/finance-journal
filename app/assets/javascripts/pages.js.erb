@@ -1,0 +1,11 @@
+var set_datepicker = function() {
+  $('.datepicker').datepicker({
+    format: 'dd.mm.yyyy',
+    autoclose: true
+  });
+};
+
+$(document).on('ready page:load', function() {
+  set_datepicker();
+});
+

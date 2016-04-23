@@ -1,9 +1,27 @@
 %h1 Listing categories
 
+%h3 Select date range
+- if params[:filter]
+  = "Actual date range is #{params[:filter][:since]} #{params[:filter][:till]}"
+
+
+=form_tag categories_path, method: :get do
+  =fields_for :filter do |f|
+    .form-group
+      = f.label :since
+      = f.text_field :since,  class: 'datepicker'
+    .form-group
+      = f.label :till
+      = f.text_field :till, class: 'datepicker'
+  = submit_tag 'Filter', class: 'btn btn-primary'
+
 %table.table
   %thead
     %tr
       %th.table-head Name
+      %th.table-head Incomes
+      %th.table-head Outcomes
+      %th.table-head Difference
       %th
       %th
       %th
@@ -11,7 +29,10 @@
   %tbody
     - @categories.each do |category|
       %tr
-        %td= category.name
+        %td= category.category_name
+        %td= category.income
+        %td= category.outcome
+        %td= category.difference
         %td= link_to 'Show', category, class: 'btn btn-small btn-primary'
         %td= link_to 'Edit', edit_category_path(category), class: 'btn btn-small btn-primary'
         %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-small btn-danger'

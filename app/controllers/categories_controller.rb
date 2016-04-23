@@ -14,7 +14,12 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if params[:filter].present?
+      @categories = Category.select_ranged_incomes(params[:filter][:since].to_date, params[:filter][:till].to_date)
+    else
+      @categories = Category.select_all_incomes
+    end
+
   end
 
   # GET /categories/1
