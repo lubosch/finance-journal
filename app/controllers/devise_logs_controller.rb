@@ -9,12 +9,11 @@
 #  updated_at :datetime         not null
 #
 
-class DeviseLog < ActiveRecord::Base
-  belongs_to :user
+class DeviseLogsController < ApplicationController
 
-  def self.log(resource, new_action)
-    return unless User.valid_user?(resource)
-    resource.log_devise_action(new_action)
+  #everyone
+  def index
+    @devise_logs = DeviseLog.where(user: current_user)
   end
 
 end
