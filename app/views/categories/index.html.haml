@@ -1,0 +1,21 @@
+%h1 Listing categories
+
+%table.table
+  %thead
+    %tr
+      %th.table-head Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td= category.name
+        %td= link_to 'Show', category, class: 'btn btn-small btn-primary'
+        %td= link_to 'Edit', edit_category_path(category), class: 'btn btn-small btn-primary'
+        %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-small btn-danger'
+
+%br
+
+= link_to 'New Category', new_category_path, class: 'btn btn-primary'

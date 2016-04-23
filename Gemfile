@@ -49,6 +49,8 @@ gem 'bootstrap-modal-rails'
 
 gem 'annotate'
 
+gem 'actionmailer'
+
 gem 'unobtrusive_flash', '>=3'
 # Remotipart is a Ruby on Rails gem enabling AJAX file uploads
 gem 'remotipart', '~> 1.2'

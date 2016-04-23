@@ -1,0 +1,17 @@
+%h2 Create new Transaction
+
+= form_for @account_transaction do |f|
+  = f.hidden_field :account_id
+
+  .form-group
+    = f.label :value
+    = f.text_field :value
+  .form-group
+    = f.label :purpose
+    = f.text_field :purpose
+
+  .form-group
+    = f.label :category
+    = f.collection_select :category_id, Category.all, :id, :name
+
+  = f.submit 'Save', class: 'btn btn-primary'

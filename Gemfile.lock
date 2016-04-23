@@ -360,6 +360,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   annotate
   bootstrap-modal-rails
   bootstrap-sass

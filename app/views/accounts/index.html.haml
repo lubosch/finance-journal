@@ -1,0 +1,27 @@
+%h1 Listing accounts
+
+%table.table
+  %thead
+    %tr
+      %th.table-head Name
+      %th.table-head Value
+      %th.table-head Critical value
+      %th.table-head Notification
+      %th
+      %th
+      %th
+
+  %tbody
+    - @accounts.each do |account|
+      %tr
+        %td= account.name
+        %td= account.value
+        %td= account.critical_value
+        %td= account.notification
+        %td= link_to 'Show', account, class: 'btn btn-primary btn-small'
+        %td= link_to 'Edit', edit_account_path(account), class: 'btn btn-primary btn-small'
+        %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-small'
+
+%br
+
+= link_to 'New Account', new_account_path, class: 'btn btn-primary'

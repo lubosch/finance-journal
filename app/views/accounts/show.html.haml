@@ -1,0 +1,44 @@
+%p#notice= notice
+
+%h1
+  = @account.name
+%p
+  %b Value:
+  = @account.value
+%p
+  %b Critical value:
+  = @account.critical_value
+%p
+  %b Notification:
+  = @account.notification
+
+%h2 Transactions
+%table.table
+  %thead
+    %tr
+      %th.table-head User
+      %th.table-head Value
+      %th.table-head Category
+      %th.table-head Date
+      %th.table-head Purpose
+
+
+  - @account.account_transactions.each do |acc_trans|
+    %tr
+      %td
+        = acc_trans.user_email
+      %td
+        = acc_trans.value
+      %td
+        = acc_trans.category_name
+      %td
+        = acc_trans.created_at
+      %td
+        = acc_trans.purpose
+
+= render 'account_transactions/form'
+
+= link_to 'Edit', edit_account_path(@account)
+\|
+= link_to 'Back', accounts_path
+

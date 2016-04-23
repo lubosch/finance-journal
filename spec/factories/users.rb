@@ -18,6 +18,7 @@
 #  lname                  :string
 #  fname                  :string
 #  username               :string
+#  unique_session_id      :string(20)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

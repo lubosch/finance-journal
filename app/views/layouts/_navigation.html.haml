@@ -11,6 +11,10 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          =link_to 'Dashboard', user_activities_path
+          =link_to 'Categories', categories_path
+        %li
+          =link_to 'Accounts', accounts_path
+        %li
+          =link_to 'Session Logs', devise_logs_path
       %ul.nav.navbar-nav.pull-right
         = render 'layouts/navigation_links'

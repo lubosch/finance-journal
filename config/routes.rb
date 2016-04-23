@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  resources :accounts
+  resources :categories
+  devise_for :users, :controllers => {sessions: 'users/sessions'}
+
+  resources :account_transactions, only: [:create]
 
   root 'pages#index'
 
-  resources :user_activities
+  resources :devise_logs, only: [:index]
 
   get '/profile' => 'users#profile', :as => :profile
 

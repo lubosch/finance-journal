@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422185859) do
+ActiveRecord::Schema.define(version: 20160422232113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_transactions", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "user_id"
+    t.string   "purpose"
+    t.float    "value"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "account_transactions", ["account_id"], name: "index_account_transactions_on_account_id", using: :btree
+  add_index "account_transactions", ["category_id"], name: "index_account_transactions_on_category_id", using: :btree
+  add_index "account_transactions", ["user_id"], name: "index_account_transactions_on_user_id", using: :btree
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.float    "value"
+    t.float    "critical_value"
+    t.boolean  "notification"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "devise_logs", force: :cascade do |t|
     t.integer  "user_id"
@@ -57,6 +86,9 @@ ActiveRecord::Schema.define(version: 20160422185859) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "account_transactions", "accounts"
+  add_foreign_key "account_transactions", "categories"
+  add_foreign_key "account_transactions", "users"
   add_foreign_key "devise_logs", "users"
   add_foreign_key "identities", "users"
 end
